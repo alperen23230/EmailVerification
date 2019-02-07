@@ -62,6 +62,11 @@ namespace EmailConfirmation
                     name: "default",
                     template: "{controller=Account}/{action=Index}/{id?}");
 
+                routes.MapRoute(
+                    name: "Confirm",
+                    template: "{guidcode}/{id}",
+                    defaults:new { controller = "Confirmation", action="Verification" } );
+
             });
         }
     }

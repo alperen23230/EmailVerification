@@ -8,7 +8,7 @@ namespace EmailConfirmation.Helper
 {
     public static class EmailHelper
     {
-        public static void SendMail(string email, int Id)
+        public static void SendMail(string email, int Id,string GuideCode)
         {
 
             var message = new MimeMessage();
@@ -17,7 +17,8 @@ namespace EmailConfirmation.Helper
             message.Body = new TextPart("html")
             {
                 Text = "Hesabınızı onaylamak için aşağıdaki linke tıklayınız... <br/>" +
-                "<a href='https://localhost:5001/Confirmation/Verification/"+Id+"'>Onaylama Linki<a/>"
+                "<a href='https://localhost:5001/"+GuideCode+"/"+Id+"'>Onaylama Linki<a/>"
+                //Confirmation / Verification /
             };
 
             using (var client = new MailKit.Net.Smtp.SmtpClient())
